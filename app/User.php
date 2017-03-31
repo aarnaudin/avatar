@@ -2,7 +2,8 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
@@ -26,11 +27,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function mails(){
+        return $this->belongsTo(Mail::class);
+    }
+
 
 }
 
-    class User extends Model{
-        public function mails(){
-            return $this->belongsTo(Mail::class);
-        }
-    }
+
