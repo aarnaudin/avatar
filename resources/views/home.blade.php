@@ -9,6 +9,10 @@
 
                 <div class="panel-body">
                     You are logged in!
+
+                    @foreach ($mails as $m)
+                        <?php echo $m->adress.' '.$m->url_avatar.' '.$m->users->name.'<br/>'; ?>
+                    @endforeach
                 </div>
             </div>
         </div>

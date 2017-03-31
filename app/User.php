@@ -28,7 +28,7 @@ class User extends Authenticatable
     ];
 
     public function mails(){
-        return $this->belongsTo(Mail::class);
+        return $this->hasMany(Mail::class);
     }
 
 
