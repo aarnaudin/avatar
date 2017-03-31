@@ -21,8 +21,11 @@ Route::get('/home', 'HomeController@index');
 
 Route::group(['middleware' => 'auth'], function(){
 
-    Route::get('mesAvatars/{monId}', 'avatarsController@showAvatarsList')->name('listAvatars');
-    Route::post('mesAvatars/ajouter', 'avatarsController@addAvatar')->name('addAvatar');
-    Route::delete('mesAvatars/supprimer', 'avatarsController@removeAvatar')->name('removeAvatar');
+    Route::get('mesAvatars/{monId}', 'avatarController@showAvatarsList')->name('listAvatars');
+    Route::post('mesAvatars/ajouter', 'avatarController@addAvatar')->name('addAvatar');
+    Route::delete('mesAvatars/supprimer', 'avatarController@removeAvatar')->name('removeAvatar');
 
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
