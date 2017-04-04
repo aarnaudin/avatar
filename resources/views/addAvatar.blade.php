@@ -10,7 +10,7 @@
 
         <br>
 
-        {!! Form::label('title_name', 'Titre') !!}
+        {!! Form::label('avatar_name', 'Ajouter un avatar') !!}
         {!! Form::file('avatar') !!}
 
         <br>
