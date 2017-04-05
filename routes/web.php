@@ -17,7 +17,6 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function(){
 
-
     Route::get('/', 'AvatarController@showAvatarsList')->name('listAvatars');
     Route::post('/mes-avatars/ajouter', 'AvatarController@addAvatar')->name('addAvatar');
     Route::delete('/mes-avatars/supprimer', 'AvatarController@removeAvatar')->name('removeAvatar');
