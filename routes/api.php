@@ -17,6 +17,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('api/infos','apiController@getInfos')->name('getInfos');
+Route::get('/infos','ApiController@getInfos')->name('getInfos');
 
-Route::get('api/avatar/{id}', 'apiController@getAvatar')->name('getAvatar');
+Route::get('/avatar/{id}', 'ApiController@getAvatar')->name('getAvatar');
