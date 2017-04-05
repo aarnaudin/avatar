@@ -22,7 +22,7 @@ class AvatarController extends Controller
     public function addAvatar(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'avatar' => 'required',
+            'avatar' => 'required|mimes:jpeg,png',
             'mail' => 'required|email',
         ]);
 
@@ -31,8 +31,7 @@ class AvatarController extends Controller
         }
 
         elseif ($validator->fails()){
-            echo 'Il y a une erreur : ';
-            return $validator->errors()->all();
+            return redirect('/')->withErrors($validator);
         }
     }
 }
