@@ -8,10 +8,10 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    You are logged in!
 
                     @foreach ($mails as $m)
-                        <?php echo $m->adress.' '.$m->url_avatar.' '.$m->users->name.'<br/>'; ?>
+                        {{ $m -> adress }}
+                        <img src="{{ $m -> url_avatar}}"/>
                     @endforeach
                 </div>
             </div>

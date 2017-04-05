@@ -11,20 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index');
 
 Route::group(['middleware' => 'auth'], function(){
-    
-    Route::post('mesAvatars/ajouter', 'avatarController@addAvatar')->name('addAvatar');
-    Route::delete('mesAvatars/supprimer', 'avatarController@removeAvatar')->name('removeAvatar');
+
+
+    Route::get('/', 'AvatarController@showAvatarsList')->name('listAvatars');
+    Route::post('/mes-avatars/ajouter', 'AvatarController@addAvatar')->name('addAvatar');
+    Route::delete('/mes-avatars/supprimer', 'AvatarController@removeAvatar')->name('removeAvatar');
 
 });
-Auth::routes();
 
-Route::get('/home', 'HomeController@index');
