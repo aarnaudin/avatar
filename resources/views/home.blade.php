@@ -15,7 +15,7 @@
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
                     Ajouter un avatar
-                </button>
+                </button><br>
                 <?php
                 foreach ($errors->all() as $error)
                     {
@@ -67,7 +67,7 @@
                                 <b>Adresse mail :</b> {{ $m -> adress }}
                             </div>
                             <div class="panel-body title_avatar">
-                                <b>Avatar associé : </b><img id="avatar_size" src="{{ $m -> url_avatar}}"/>
+                                <img id="avatar_size" src="{{ $m -> url_avatar}}"/>
                             </div>
                         </div>
                     </div>
