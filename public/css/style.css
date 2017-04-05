@@ -49,3 +49,12 @@ html, body {
 .m-b-md {
     margin-bottom: 30px;
 }
+
+img#avatar_size {
+    width: 50px;
+    height: 50px;
+}
+
+.title_avatar{
+    text-align: center;
+}
