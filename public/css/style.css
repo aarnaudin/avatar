@@ -53,7 +53,7 @@ html, body {
 img#avatar_size {
     width: 70px;
     height: 70px;
-    border-radius: 25px;
+    border-radius: 35px;
 }
 
 .title_avatar{
@@ -74,4 +74,17 @@ nav.navbar.navbar-default.navbar-static-top {
 p.errors {
     color: #A91101;
     font-weight: bold;
+    text-align: center;
+}
+
+.panel-footer {
+    text-align: center;
+}
+
+.modal-body {
+    font-weight: bold;
+}
+
+.add_avatar{
+    top: 7px;
 }

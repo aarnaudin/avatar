@@ -21,17 +21,29 @@ class AvatarController extends Controller
 
     public function addAvatar(Request $request)
     {
-        $validator = Validator::make($request->all(), [
+        $rules = array(
             'avatar' => 'required|mimes:jpeg,png',
             'mail' => 'required|email',
-        ]);
+        );
+
+        $frMessages = [
+            'mail.required' => 'L\'adresse mail n\'est pas renseignée !',
+            'mail.email' => 'L\'adresse mail n\'est pas de type mail (Exemple : exemple@exemple.fr) !',
+            'avatar.required' => 'Aucun avatar n\'a été téléchargé !',
+            'avatar.mimes' => 'Le format du fichier doit être .jpeg, .jpg ou .png !',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $frMessages);
 
         if ($validator->passes()){
             $input = $request->all();
         }
 
         elseif ($validator->fails()){
-            return redirect('/')->withErrors($validator);
+          return redirect('/')->withErrors($validator);
         }
     }
+
+
+
 }
