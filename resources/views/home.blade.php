@@ -16,7 +16,12 @@
                 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
                     Ajouter un avatar
                 </button>
-
+                <?php
+                foreach ($errors->all() as $error)
+                    {
+                        echo '<p class="errors">'.$error.'</p>';
+                    }
+                ?>
                 <!-- Modal -->
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                     <div class="modal-dialog" role="document">
