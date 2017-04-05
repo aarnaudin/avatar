@@ -14,10 +14,6 @@ class AvatarController extends Controller
         return view('home')->with(array('mails'=>$mails));
     }
 
-    public function displayFormAvatar(Request $request)
-    {
-        return view('addAvatar');
-    }
 
     public function addAvatar(Request $request)
     {
@@ -36,7 +32,25 @@ class AvatarController extends Controller
         $validator = Validator::make($request->all(), $rules, $frMessages);
 
         if ($validator->passes()){
-            $input = $request->all();
+            $mail = new Mail;
+            $mail -> adress = $request -> mail;
+            $mail -> user_id = Auth::id();
+            $mail -> url_avatar = "";
+            $mail->save();
+
+            $avatarName = $mail->id.'.'.
+                $request->avatar->getClientOriginalName();
+
+
+            $request->file('avatar')->move(
+                base_path().'/public/assets/avatars/', $avatarName
+            );
+
+            $urlAvatar = asset('assets/avatars/'.$avatarName);
+            $mail-> url_avatar = $urlAvatar;
+            $mail->save();
+
+            return redirect('/');
         }
 
         elseif ($validator->fails()){

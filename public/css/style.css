@@ -51,10 +51,40 @@ html, body {
 }
 
 img#avatar_size {
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
+    border-radius: 35px;
 }
 
 .title_avatar{
     text-align: center;
+}
+
+.main_title{
+    font-family: 'Kalam', cursive;
+    font-size: 45px;
+    text-align: center;
+}
+
+
+nav.navbar.navbar-default.navbar-static-top {
+    font-weight: bold;
+}
+
+p.errors {
+    color: #A91101;
+    font-weight: bold;
+    text-align: center;
+}
+
+.panel-footer {
+    text-align: center;
+}
+
+.modal-body {
+    font-weight: bold;
+}
+
+.add_avatar{
+    top: 7px;
 }
