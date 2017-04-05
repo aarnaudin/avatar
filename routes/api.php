@@ -19,4 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/infos','ApiController@getInfos')->name('getInfos');
 
-Route::get('/avatar/{id}', 'ApiController@getAvatar')->name('getAvatar');
+Route::get('/avatar/{mail}', 'ApiController@getAvatar');
