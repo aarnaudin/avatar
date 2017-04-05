@@ -35,14 +35,14 @@
 
                             <div class="modal-body">
 
-                                    {!! Form::open((array('route'=>'addAvatar', 'method' => 'POST'))) !!}
+                                    {!! Form::open((array('route'=>'addAvatar', 'method' => 'POST', 'files' => true))) !!}
 
                                     {!! Form::label('mail_name', 'Mail :') !!}
                                     {!! Form::text('mail') !!}
 
                                     <br><br>
 
-                                    {!! Form::label('avatar_name', 'Ajouter un avatar (Format autorisés : jpeg ou png) :') !!}
+                                    {!! Form::label('avatar_name', 'Ajouter un avatar (Format autorisés : jpeg, jpg ou png) :') !!}
                                     {!! Form::file('avatar') !!}
 
                                     <br><br>
