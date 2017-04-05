@@ -12,7 +12,7 @@
                     @foreach ($mails as $m)
                         {{ $m -> adress }}
                         <img src="{{ $m -> url_avatar}}"/>
-                    @endforeach
+                    @endforeachs
                 </div>
             </div>
         </div>
