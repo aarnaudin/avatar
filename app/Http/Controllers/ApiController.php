@@ -9,7 +9,7 @@ namespace App\Http\Controllers {
 
         public function getInfos()
         {
-            return ;
+            return "zkjefzkefhzkjefh";
         }
     }
 }
