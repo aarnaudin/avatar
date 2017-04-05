@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
 
-        {!! Form::open((array('route'=>'home.ajouter', 'method' => 'POST'))) !!}
+        {!! Form::open((array('route'=>'addAvatar', 'method' => 'POST'))) !!}
 
         {!! Form::label('mail_name', 'Mail') !!}
         {!! Form::text('mail') !!}
@@ -18,7 +18,6 @@
         {!! Form::submit('Enregistrer!') !!}
 
         {!! Form::close() !!}
-
 
     </div>
 @endsection
