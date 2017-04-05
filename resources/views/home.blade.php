@@ -57,18 +57,18 @@
                     <div class="col-md-6">
                         <div class="panel panel-primary">
                             <div class="panel-heading title_avatar">
-                                <b>Adresse mail :</b> {{ $m -> adress }}
+                                <b>Adresse mail : <i>{{ $m -> adress }}</i></b>
                             </div>
                             <div class="panel-body title_avatar">
                                 <img id="avatar_size" src="{{ $m -> url_avatar}}"/>
                             </div>
                             <div class="panel-footer">
                                 <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteAvatar">
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteAvatar{{ $m -> id }}">
                                     Supprimer avatar
                                 </button>
                                 <!-- Modal -->
-                                <div class="modal fade" id="deleteAvatar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                <div class="modal fade" id="deleteAvatar{{ $m -> id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
