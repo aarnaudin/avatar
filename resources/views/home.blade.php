@@ -5,16 +5,14 @@
 
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         <link href="../public/css/style.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-lightbox/0.7.0/bootstrap-lightbox.min.css">
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-lightbox/0.7.0/bootstrap-lightbox.min.js"></script>
+        <script src='jquery-3.2.0.min.js'></script>
 
     </head>
     <div class="container">
 
         <div class="row">
             <div class="col-md-12">
+                <!-- Display if errors -->
                         <?php
                             foreach ($errors->all() as $error)
                                 {
@@ -23,7 +21,7 @@
                         ?>
             </div>
 
-                <!-- Modal -->
+                <!-- Modal for form create avatar -->
                 <div class="modal fade" id="addAvatar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -32,6 +30,7 @@
                                 <h4 class="modal-title" id="myModalLabel">Ajout d'un avatar</h4>
                             </div>
 
+                            <!-- Form -->
                             <div class="modal-body">
 
                                     {!! Form::open((array('route'=>'addAvatar', 'method' => 'POST', 'files' => true))) !!}
@@ -55,35 +54,25 @@
                 </div>
         </div><br>
 
-
+        <!-- Display avatar's list for user-->
         <div class="row">
             @foreach ($mails as $m)
                     <div class="col-md-6">
                         <div class="panel panel-primary avatar_small">
                             <div class="panel-heading title_avatar">
+                                <!-- Display mail -->
                                 <b>Adresse mail : <i>{{ $m -> adress }}</i></b>
                             </div>
 
-                            <a data-toggle="lightbox" href="#demoLightbox{{ $m -> id }}">
-                                <img src="{{ $m -> url_avatar}}" class="small-img"/>
-                            </a>
-                            <div id="demoLightbox{{ $m -> id }}" class="lightbox fade"  tabindex="-1" role="dialog" aria-hidden="true">
-                                <div class='lightbox-dialog'>
-                                    <div class='lightbox-content'>
-                                        <img src="{{ $m -> url_avatar}}"/>
-                                        <div class='lightbox-caption'>
-                                            Avatar associé à l'adresse mail {{ $m -> adress }}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <!-- Display avatar -->
+                            <img src="{{ $m -> url_avatar}}" class="small-img"/>
 
                             <div class="panel-footer">
-                                <!-- Button trigger modal -->
+                                <!-- Button modal for delete avatar -->
                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteAvatar{{ $m -> id }}">
                                     Supprimer avatar
                                 </button>
-                                <!-- Modal -->
+                                <!-- Modal for delete avatar  -->
                                 <div class="modal fade" id="deleteAvatar{{ $m -> id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -95,12 +84,16 @@
                                                 Etes-vous sûr de vouloir supprimer cet avatar ?
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Non j'ai peur</button>
-
-                                                {!! Form::open(array('route' => ['deleteAvatar', $m -> id], 'method' => "delete")) !!}
-                                                {!! Form::submit('Oui j\'ose', ['class' => 'btn btn-success'] ) !!}
-                                                {!! Form::close() !!}
-
+                                                <div class="row">
+                                                    <div class="col-md-6 centrer">
+                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Non j'ai peur</button>
+                                                    </div>
+                                                    <div class="col-md-6 centrer">
+                                                        {!! Form::open(array('route' => ['deleteAvatar', $m -> id], 'method' => "delete")) !!}
+                                                        {!! Form::submit('Oui j\'ose', ['class' => 'btn btn-success'] ) !!}
+                                                        {!! Form::close() !!}
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -110,8 +103,6 @@
                     </div>
             @endforeach
         </div>
-
-
     </div>
 @endsection
 
