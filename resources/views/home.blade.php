@@ -5,6 +5,10 @@
 
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         <link href="../public/css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-lightbox/0.7.0/bootstrap-lightbox.min.css">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-lightbox/0.7.0/bootstrap-lightbox.min.js"></script>
 
     </head>
     <div class="container">
@@ -55,13 +59,25 @@
         <div class="row">
             @foreach ($mails as $m)
                     <div class="col-md-6">
-                        <div class="panel panel-primary">
+                        <div class="panel panel-primary avatar_small">
                             <div class="panel-heading title_avatar">
                                 <b>Adresse mail : <i>{{ $m -> adress }}</i></b>
                             </div>
-                            <div class="panel-body title_avatar">
-                                <img id="avatar_size" src="{{ $m -> url_avatar}}"/>
+
+                            <a data-toggle="lightbox" href="#demoLightbox{{ $m -> id }}">
+                                <img src="{{ $m -> url_avatar}}" class="small-img"/>
+                            </a>
+                            <div id="demoLightbox{{ $m -> id }}" class="lightbox fade"  tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class='lightbox-dialog'>
+                                    <div class='lightbox-content'>
+                                        <img src="{{ $m -> url_avatar}}"/>
+                                        <div class='lightbox-caption'>
+                                            Avatar associé à l'adresse mail {{ $m -> adress }}
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+
                             <div class="panel-footer">
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteAvatar{{ $m -> id }}">

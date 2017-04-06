@@ -8,9 +8,8 @@
 
     <body>
         <div class="container">
-            <div class="col-md-8 col-md-offset-2">
-                <h1 class="main_title">Avator, cherche patatort !</h1>
-                <h1 class="main_title">Osez l'aventuravator !</h1>
+            <div class="col-md-10 col-md-offset-1">
+                <h1 class="main_title">Avator, l'application qui à grave pas tort !</h1><br>
             </div>
         </div>
 
