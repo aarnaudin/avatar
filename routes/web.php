@@ -17,9 +17,14 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function(){
 
-    Route::get('/', 'AvatarController@showAvatarsList')->name('listAvatars');
-    Route::post('/ajouter-avatar', 'AvatarController@addAvatar')->name('addAvatar');
-    Route::delete('/supprimer-avatar/{id}', 'AvatarController@deleteAvatar')->name('deleteAvatar');
+    Route::get('/', 'AvatarController@showAvatarsList')
+        -> name('listAvatars');
 
+    Route::post('/ajouter-avatar', 'AvatarController@addAvatar')
+        -> name('addAvatar');
+
+    Route::delete('/supprimer-avatar/{id}', 'AvatarController@deleteAvatar')
+        -> name('deleteAvatar')
+        -> where('id', '[0-9]+');
 });
 
