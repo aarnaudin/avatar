@@ -11,7 +11,6 @@
                     <div class="panel-body">
                         <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
                             {{ csrf_field() }}
-
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="name" class="col-md-4 control-label">Nom et Prénom</label>
 
@@ -61,6 +60,14 @@
                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                                 </div>
                             </div>
+
+                            <!-- Display if errors -->
+                            <?php
+                                foreach ($errors->all() as $error)
+                                {
+                                    echo '<p class="errors">'.$error.'</p>';
+                                }
+                            ?>
 
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">

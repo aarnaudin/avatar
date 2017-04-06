@@ -3,9 +3,6 @@
 @section('content')
     <head>
 
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-        <link href="../public/css/style.css" rel="stylesheet">
-        <script src='jquery-3.2.0.min.js'></script>
 
     </head>
     <div class="container">
