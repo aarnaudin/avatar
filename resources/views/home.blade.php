@@ -80,7 +80,11 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Non j'ai peur</button>
-                                                <button type="button" class="btn btn-success">Oui j'ose</button>
+
+                                                {!! Form::open(array('route' => ['deleteAvatar', $m -> id], 'method' => "delete")) !!}
+                                                {!! Form::submit('Oui j\'ose', ['class' => 'btn btn-success'] ) !!}
+                                                {!! Form::close() !!}
+
                                             </div>
                                         </div>
                                     </div>

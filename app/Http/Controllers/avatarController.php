@@ -36,14 +36,40 @@ class AvatarController extends Controller
         $validator = Validator::make($request->all(), $rules, $frMessages);
 
         if ($validator->passes()){
-            $input = $request->all();
+
+            $mail = new Mail;
+            $mail -> adress = $request -> mail;
+            $mail -> user_id = Auth::id();
+            $mail -> url_avatar = "";
+            $mail->save();
+
+            $avatarName = $mail->id.'.'.
+                $request->avatar->getClientOriginalName();
+
+
+            $request->file('avatar')->move(
+                base_path().'/public/assets/avatars/', $avatarName
+            );
+
+            $urlAvatar = asset('assets/avatars/'.$avatarName);
+            $mail-> url_avatar = $urlAvatar;
+            $mail->save();
+            return redirect('/')->withErrors($validator);
+
         }
 
         elseif ($validator->fails()){
           return redirect('/')->withErrors($validator);
         }
+
     }
 
+    public function deleteAvatar($id)
+    {
+        $avatar = Mail::where('id','=',$id);
+        $avatar -> delete();
+        return redirect('/');
 
+    }
 
 }
