@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -36,6 +37,24 @@ class AvatarController extends Controller
         $validator = Validator::make($request->all(), $rules, $frMessages);
 
         if ($validator->passes()){
+
+            //The adress must me unique
+            $exist = Mail::where('adress','=',$request -> mail)->get();
+            if(isset($exist[0]))
+                    return redirect()->route('listAvatars')->withErrors('Cette adresse mail n\'est pas disponible.');
+
+            //The adress can't be the same that a primary adress except if it's mine
+            $exist = User::where('email','=',$request -> mail)->get();
+            $user = User::where('id','=',Auth::id())->get();
+            $userMail = $user[0] -> email;
+
+
+            //If there is a result, the adress is not available
+            if((isset($exist[0])) && ($userMail != $request -> mail))
+            {
+                return redirect()->route('listAvatars')->withErrors('Cette adresse mail n\'est pas disponible.');
+            }
+
 
             $mail = new Mail;
             $mail -> adress = $request -> mail;
