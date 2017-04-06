@@ -54,12 +54,12 @@ class AvatarController extends Controller
             $urlAvatar = asset('assets/avatars/'.$avatarName);
             $mail-> url_avatar = $urlAvatar;
             $mail->save();
-            return redirect('/')->withErrors($validator);
+            return redirect()->route('listAvatars')->withErrors($validator);
 
         }
 
         elseif ($validator->fails()){
-          return redirect('/')->withErrors($validator);
+          return redirect()->route('listAvatars')->withErrors($validator);
         }
 
     }
@@ -68,7 +68,7 @@ class AvatarController extends Controller
     {
         $avatar = Mail::where('id','=',$id);
         $avatar -> delete();
-        return redirect('/');
+        return redirect()->route('listAvatars');
 
     }
 
