@@ -3,7 +3,7 @@
 namespace App\Http\Controllers {
 
     use Illuminate\Http\Request;
-    use App\User;
+    use App\Mail;
     use App\Http\Controllers\Controller;
     use Illuminate\Support\Facades\DB;
     use Illuminate\Support\Facades\Config;
@@ -13,17 +13,17 @@ namespace App\Http\Controllers {
 
 
          public function getAvatar($mail){
-             $infos_user = DB::select('select url_avatar from ava_mails where adress = ?',[$mail]);
-             $json_user = json_encode($infos_user);
-             return $json_user;
+
+             $infos_user = Mail::where('adress', '=', $mail)->get();
+             $url = $infos_user[0] -> url_avatar;
+             $url = json_encode($url);
+             return $url;
         }
 
         public function getInfos(){
-
             return Config::get('api.api');
         }
-
-
-        }
     }
+
+}
 

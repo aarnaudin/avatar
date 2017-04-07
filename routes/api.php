@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,4 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/infos','ApiController@getInfos')->name('getInfos');
 
-Route::get('/avatar/{mail}', 'ApiController@getAvatar');
+Route::get('/avatar/{mail}', 'ApiController@getAvatar')->name('getAvatar');
