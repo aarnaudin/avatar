@@ -88,7 +88,6 @@ class AvatarController extends Controller
         $avatar = Mail::where('id','=',$id);
         $avatar -> delete();
         return redirect()->route('listAvatars');
-
     }
 
 }
